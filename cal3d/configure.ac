@@ -11,11 +11,13 @@ dnl your option) any later version.
 dnl
 dnl ************************************************************************
 
-AC_INIT(src/cal3d/cal3d.h)
+AC_INIT
+AC_CONFIG_SRCDIR([src/cal3d/cal3d.h])
 
 AM_CONFIG_HEADER(config.h)
 
-AC_CANONICAL_SYSTEM
+AC_CANONICAL_TARGET
+AC_CONFIG_MACRO_DIRS([m4])
 
 AM_INIT_AUTOMAKE(cal3d,0.12.0)
 
@@ -40,8 +42,7 @@ AC_PROG_CXX
 
 AC_DISABLE_STATIC
 
-AC_LIBTOOL_WIN32_DLL
-AC_PROG_LIBTOOL
+LT_INIT(win32-dll)
 
 AC_PROG_INSTALL
 
@@ -71,7 +72,8 @@ dnl ************************************************************************
 
 AC_CONFIG_FILES([tests/coverage/test-coverage],[chmod 555 $ac_file])
 
-AC_OUTPUT(Makefile src/Makefile src/cal3d/Makefile docs/Makefile docs/api/Makefile docs/shared/Makefile tests/Makefile tests/coverage/Makefile tests/run cal3d.pc src/cal3d_converter.1 fileformats.txt)
+AC_CONFIG_FILES([Makefile src/Makefile src/cal3d/Makefile docs/Makefile docs/api/Makefile docs/shared/Makefile tests/Makefile tests/coverage/Makefile tests/run cal3d.pc src/cal3d_converter.1 fileformats.txt])
+AC_OUTPUT
 
 dnl AC_CONFIG_FILES([test-coverage],[chmod 555 $ac_file])
 
