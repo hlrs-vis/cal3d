@@ -472,10 +472,10 @@ static CalColorValue	ColorToValue( const CalCoreMaterial::Color& inColor )
 static CalCoreMaterial::Color ValueToColor( CalColorValue inValue )
 {
 	CalCoreMaterial::Color	theColor = {
-		inValue >> 24,
-		(inValue & 0x00FF0000) >> 16,
-		(inValue & 0x0000FF00) >> 8,
-		(inValue & 0x000000FF)
+		static_cast<unsigned char>(inValue >> 24),
+		static_cast<unsigned char>((inValue & 0x00FF0000) >> 16),
+		static_cast<unsigned char>((inValue & 0x0000FF00) >> 8),
+		static_cast<unsigned char>((inValue & 0x000000FF))
 	};
 	return theColor;
 }
